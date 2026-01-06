@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Surprise ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+}
+
+.section {
+  display: none;
+  margin-top: 30px;
+}
+
+button {
+  padding: 12px 26px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background: #ff2f5c;
+}
+
+/* Countdown */
+#countdown {
+  font-size: 32px;
+  margin-top: 40vh;
+}
+
+/* Poster */
+.poster {
+  background: rgba(255,255,255,0.25);
+  padding: 25px;
+  border-radius: 20px;
+  font-size: 36px;
+}
+
+/* Hearts */
+.heart {
+  position: fixed;
+  top: -10px;
+  font-size: 24px;
+  animation: fall 4s linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Photos */
+.photos img {
+  width: 80%;
+  max-width: 300px;
+  border-radius: 15px;
+  margin: 10px 0;
+}
+
+/* Letter */
+.letter {
+  background: #fff;
+  color: #333;
+  padding: 25px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+  <!-- Countdown -->
+  <div id="countdown">
+    Countdown Start Ho Raha Hai ⏳<br><br>
+    <span id="time"></span>
+  </div>
+
+  <!-- Poster -->
+  <div id="poster" class="section">
+    <div class="poster">🎂 Happy Birthday ❤️ 🎂</div>
+    <button onclick="showLove()">Click Here 💖</button>
+  </div>
+
+  <!-- Love -->
+  <div id="love" class="section">
+    <h1>I Love You ❤️</h1>
+    <button onclick="showPhotos()">Next ➡️</button>
+  </div>
+
+  <!-- Photos -->
+  <div id="photos" class="section photos">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <button onclick="showLetter()">Open Letter 💌</button>
+  </div>
+
+  <!-- Letter -->
+  <div id="letter" class="section">
+    <div class="letter">
+
+      <!-- 💌 YAHAN APNA MESSAGE LIKHNA 💌 -->
+      My Love chutku ❤️<br><br>
+
+     
+      Happy birthday chutku .  
+I hope mere bina bhoht khus honge ap or khush hi raho 
+I love you ❤️ or I miss you mera sabse pyara sa ladla bacha mera chotu si jaan meri  bhoht sundar sa chutku pyari pyari akho vala.  
+      Pyaraa saa bachaa ..❤️  
+   Vo Vo Tha..."
+
+Vo vo tha jo sab tha, Par mere liye kuch khaas tha.
+
+Sab ke liye ek kahani purani, Mere liye vo zinda ehsaas tha.
+
+Vo vo tha jo sirf mera tha, Har dua mein bas uska zikr tha.
+
+Sab kehte the galat hai vo, Par mere dil ko to wahi asar tha.
+
+Vo vo tha jo sabke liye galat tha, Par mujhe laga, vo hi mera sahi tha.
+
+Log samjhe bewakoofi meri, Par dil ne use ibadat jaisi chaha tha.
+
+Aaj bhi jab yaad aata hai, To aankhon mein nami si chha jaati hai.
+
+Vo vo tha... jo ab nahi hai, Par har dhadkan uska naam suna jaati hai...  
+
+      <br><br>
+      Happy Birthday 🎂
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* =========================
+   🔍 PREVIEW MODE
+   true  = abhi check karne ke liye
+   false = birthday ke din ke liye
+========================= */
+let previewMode = true;
+
+/* 🎯 11 January, raat 12:00 */
+let targetDate = new Date(2026, 0, 11, 0, 0, 0).getTime();
+
+const music = document.getElementById("bgMusic");
+
+function startMusic() {
+  music.play().catch(() => {});
+}
+
+if (previewMode) {
+  document.getElementById("countdown").style.display = "none";
+  document.getElementById("poster").style.display = "block";
+} else {
+  let timer = setInterval(() => {
+    let now = new Date().getTime();
+    let distance = targetDate - now;
+
+    if (distance <= 0) {
+      clearInterval(timer);
+      document.getElementById("countdown").style.display = "none";
+      document.getElementById("poster").style.display = "block";
+      return;
+    }
+
+    let d = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let s = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("time").innerHTML =
+      d + "d " + h + "h " + m + "m " + s + "s";
+  }, 1000);
+}
+
+function showLove() {
+  startMusic();
+  document.getElementById("love").style.display = "block";
+  createHearts();
+}
+
+function showPhotos() {
+  document.getElementById("photos").style.display = "block";
+}
+
+function showLetter() {
+  document.getElementById("letter").style.display = "block";
+}
+
+function createHearts() {
+  setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 4000);
+  }, 300);
+}
+</script>
+
+</body>
+</html>
