@@ -47,6 +47,7 @@ text-align:center;
   align-items:center;
   justify-content:center;
   transition:1s ease;
+  padding-top:40px;
 }
 .hide{
   transform:translateX(-100%);
@@ -75,6 +76,8 @@ text-align:center;
   border-radius:30px;
   font-size:16px;
   cursor:pointer;
+  position:relative;
+  z-index:10;
 }
 .yellow{background:#ffd400}
 .pink{background:#ff69b4;color:white}
@@ -193,6 +196,27 @@ text-align:center;
   from{transform:translate(-50%,100%)}
   to{transform:translate(-50%,0)}
 }
+
+/* FIX CAKE SIZE */
+.cake {
+  width: 160px;
+  height: 120px;
+  margin: 20px auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* BUTTON ALWAYS CLICKABLE */
+button {
+  position: relative;
+  z-index: 10;
+}
+
+/* PETALS CLICK BLOCK NA KARE */
+.petal {
+  pointer-events: none;
+}
+  
 </style>
 </head>
 
