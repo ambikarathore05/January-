@@ -12,6 +12,11 @@ body {
   background: #f6d6dc;
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 /* falling hearts */
@@ -28,16 +33,12 @@ body {
 }
 
 .card {
-  position: relative;
   background: #fff;
   width: 85%;
   max-width: 350px;
   padding: 35px 20px;
   border-radius: 20px;
   text-align: center;
-  margin: auto;
-  top: 50%;
-  transform: translateY(-50%);
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   z-index: 2;
 }
