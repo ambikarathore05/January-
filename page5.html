@@ -3,73 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Page 5</title>
+<title>Have a look</title>
 
 <style>
 body{
   margin:0;
-  padding:0;
-  min-height:100vh;
-  background:#f6d6dc;
-  font-family:'Poppins', sans-serif;
+  height:100vh;
+  background:#f6cfd6;
   overflow:hidden;
-
+  font-family: Arial, sans-serif;
   display:flex;
   justify-content:center;
   align-items:center;
 }
 
-/* WHITE CARD */
-.card{
-  background:#fff;
-  width:85%;
-  max-width:320px;
-  padding:40px 25px;
-  border-radius:18px;
-  text-align:center;
-  box-shadow:0 15px 30px rgba(0,0,0,0.15);
-  z-index:2;
-}
-
-.card h2{
-  font-size:20px;
-  font-weight:500;
-  margin-bottom:25px;
-}
-
-/* BUTTON */
-.btn{
-  background:#e75480;
-  color:#fff;
-  border:none;
-  padding:14px 34px;
-  border-radius:30px;
-  font-size:16px;
-  cursor:pointer;
-  animation:shake 1.2s infinite;
-}
-
-@keyframes shake{
-  0%{transform:translateX(0);}
-  25%{transform:translateX(-3px);}
-  50%{transform:translateX(3px);}
-  75%{transform:translateX(-3px);}
-  100%{transform:translateX(0);}
-}
-
-/* HEARTS */
+/* falling hearts */
 .heart{
   position:fixed;
-  top:-20px;
+  top:-10px;
+  color:#ff6b9a;
   font-size:18px;
-  color:#ff5c8a;
   animation:fall linear infinite;
+}
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
+
+/* card */
+.card{
+  background:white;
+  width:85%;
+  max-width:350px;
+  padding:30px 20px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  position:relative;
   z-index:1;
 }
 
-@keyframes fall{
-  0%{transform:translateY(-10px);opacity:1;}
-  100%{transform:translateY(110vh);opacity:0;}
+/* rotated text */
+.title{
+  transform:rotate(-90deg);
+  font-size:20px;
+  margin:30px 0;
+}
+
+/* button */
+.btn{
+  padding:14px 30px;
+  background:#e75480;
+  border:none;
+  border-radius:30px;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+}
+
+/* dots */
+.dots{
+  margin-top:15px;
+}
+.dot{
+  height:8px;
+  width:8px;
+  background:#e75480;
+  border-radius:50%;
+  display:inline-block;
+  margin:0 4px;
 }
 </style>
 </head>
@@ -77,27 +81,34 @@ body{
 <body>
 
 <div class="card">
-  <h2>Have a look at it sir jii ✨</h2>
-  <button class="btn" onclick="nextPage()">Let's Go 💕</button>
+  <div class="title">Have a look at it Madam jii ✨</div>
+
+  <!-- IMPORTANT PART -->
+  <button class="btn" onclick="goNext()">Let's Go 💖</button>
+
+  <div class="dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
 </div>
 
 <script>
-function nextPage(){window.location.href = "page6.html";
-                   }
-  // agar aage koi page chahiye to yahan naam badal dena
-  // window.location.href = "page6.html";
-}
-
-/* HEARTS FALLING */
+// hearts
 setInterval(()=>{
   const h=document.createElement("div");
   h.className="heart";
   h.innerHTML="❤️";
   h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=(3+Math.random()*3)+"s";
+  h.style.animationDuration=2+Math.random()*3+"s";
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
+  setTimeout(()=>h.remove(),5000);
 },300);
+
+// GO TO 6th FILE
+function goNext(){
+  window.location.href = "page6.html; 
+}
 </script>
 
 </body>
