@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Aditya 🎉</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f6d6dc;
+  overflow: hidden;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 34px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.name {
+  color: #e91e63;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.highlight {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.surprise {
+  font-size: 15px;
+  color: #7b1fa2;
+  margin-bottom: 25px;
+}
+
+.btn {
+  background: #e91e63;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* floating emojis */
+.emoji {
+  position: absolute;
+  font-size: 24px;
+  animation: float 6s infinite linear;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh); opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Happy Birthday <span class="name">chutku</span> 🎂</h1>
+
+  <p class="tagline">You mean more to me than words can ever explain 💕</p>
+
+  <p class="highlight">✨ It's Your Birthday! ✨</p>
+
+  <p class="surprise">💜 Ready for your surprise?<br>Something magical is about to unfold 💫</p>
+
+  <a href="page3.html" class="btn">🎉 Let’s Celebrate</a>
+</div>
+
+<script>
+const emojis = ["🎉","🎂","💖","✨","🎁","💝"];
+
+for (let i = 0; i < 18; i++) {
+  let span = document.createElement("span");
+  span.className = "emoji";
+  span.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+  span.style.left = Math.random() * 100 + "vw";
+  span.style.animationDuration = (3 + Math.random() * 3) + "s";
+  document.body.appendChild(span);
+}
+</script>
+
+</body>
+</html>
