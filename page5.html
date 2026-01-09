@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page 5</title>
+
+<style>
+body{
+  margin:0;
+  padding:0;
+  min-height:100vh;
+  background:#f6d6dc;
+  font-family:'Poppins', sans-serif;
+  overflow:hidden;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* WHITE CARD */
+.card{
+  background:#fff;
+  width:85%;
+  max-width:320px;
+  padding:40px 25px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 15px 30px rgba(0,0,0,0.15);
+  z-index:2;
+}
+
+.card h2{
+  font-size:20px;
+  font-weight:500;
+  margin-bottom:25px;
+}
+
+/* BUTTON */
+.btn{
+  background:#e75480;
+  color:#fff;
+  border:none;
+  padding:14px 34px;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  animation:shake 1.2s infinite;
+}
+
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-3px);}
+  50%{transform:translateX(3px);}
+  75%{transform:translateX(-3px);}
+  100%{transform:translateX(0);}
+}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  top:-20px;
+  font-size:18px;
+  color:#ff5c8a;
+  animation:fall linear infinite;
+  z-index:1;
+}
+
+@keyframes fall{
+  0%{transform:translateY(-10px);opacity:1;}
+  100%{transform:translateY(110vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Have a look at it sir jii ✨</h2>
+  <button class="btn" onclick="nextPage()">Let's Go 💕</button>
+</div>
+
+<script>
+function nextPage(){
+  // agar aage koi page chahiye to yahan naam badal dena
+  // window.location.href = "page6.html";
+}
+
+/* HEARTS FALLING */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
