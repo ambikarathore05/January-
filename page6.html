@@ -286,6 +286,11 @@ for(let i=0;i<30;i++){
     </div>
 
     <button class="cake-btn" onclick="blow()">Blow The Candles</button>
+    <button class="btn orange" id="msgBtn"
+ onclick="goMessage()"
+ style="display:none;margin-top:20px">
+ Well, I have a message for you 💌
+    </button>
   </div>
 </div>
 
@@ -323,16 +328,26 @@ function playMusic(){
 }
 
 function blow(){
- document.querySelectorAll(".candle").forEach(c=>c.remove());
+
+ // sirf flame band hogi
+ document.querySelectorAll(".flame").forEach(f => f.remove());
+
+ // balloons sirf isi section (s3) me
  for(let i=0;i<12;i++){
-  let b=document.createElement("div");
-  b.className="balloon";
-  b.style.left=Math.random()*100+"vw";
-  b.style.background=`hsl(${Math.random()*360},70%,60%)`;
-  document.body.appendChild(b);
+  let b = document.createElement("div");
+  b.className = "balloon";
+  b.style.left = Math.random()*100 + "vw";
+  b.style.background = `hsl(${Math.random()*360},70%,60%)`;
+  document.getElementById("s3").appendChild(b);
  }
- slide("s3","s4");
+
+ // message button dikhao
+ document.getElementById("msgBtn").style.display = "inline-block";
 }
+  function goMessage(){
+ document.querySelectorAll(".balloon").forEach(b => b.remove());
+ slide("s3","s4");
+  }
 
 function openLetter(){
  document.getElementById("letter").style.display="block";
