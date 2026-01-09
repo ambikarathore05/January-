@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do you wanna see? 💖</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #f6d6dc;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* falling hearts */
+.heart {
+  position: absolute;
+  color: #e91e63;
+  font-size: 18px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10vh); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+
+.card {
+  position: relative;
+  background: #fff;
+  width: 85%;
+  max-width: 350px;
+  padding: 35px 20px;
+  border-radius: 20px;
+  text-align: center;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 2;
+}
+
+.card h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* YES button animation */
+.yes-btn {
+  background: #e91e63;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 15px;
+  cursor: pointer;
+  animation: shake 1.2s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+.no-btn {
+  background: #7e57c2;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 15px;
+}
+
+.yes-btn:active, .no-btn:active {
+  transform: scale(0.95);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Do you wanna see what I made?? ✨</h2>
+
+  <div class="buttons">
+    <button class="yes-btn" onclick="goNext()">Yes! 💖</button>
+    <button class="no-btn">No</button>
+  </div>
+</div>
+
+<script>
+// hearts generator
+const hearts = ["💖","💗","💘","💕"];
+
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 7000);
+}, 300);
+
+// YES button → next page
+function goNext() {
+  window.location.href = "page5.html";
+}
+</script>
+
+</body>
+</html>
