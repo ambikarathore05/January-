@@ -65,6 +65,30 @@ text-align:center;
   opacity:.7;
   pointer-events: none; 
 }
+
+/* HAPPY BIRTHDAY TEXT – CAKE KE UPAR CENTER */
+.hb-text{
+  text-align:center;
+  font-size:40px;
+  font-weight:800;
+  margin-bottom:15px;
+  font-family:'Montserrat', sans-serif;
+  background:linear-gradient(90deg,#ff4d6d,#ffb703,#ffd60a);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:hbGlow 1.5s infinite alternate;
+}
+
+@keyframes hbGlow{
+  from{
+    text-shadow:0 0 8px rgba(255,0,100,.6);
+  }
+  to{
+    text-shadow:0 0 20px rgba(255,180,0,1);
+  }
+}
+
+  
 @keyframes fall{
   from{transform:translateY(-10vh)}
   to{transform:translateY(110vh)}
@@ -95,12 +119,12 @@ text-align:center;
 
 .cake{
   position:relative;
-  width:150px;
+  width:140px;
 }
 
 .layer{
-  width:80%;
-  height:30px;
+  width:70%;
+  height:20px;
   border-radius:12px;
   margin-bottom:6px;
 }
@@ -249,6 +273,7 @@ for(let i=0;i<30;i++){
 
 <!-- SECTION 3 -->
 <div class="section hide" id="s3">
+  <div class="hb-text">Happy Birthday 🎂</div>
   <div class="cake-area">
     <div class="cake">
       <div class="layer layer1"></div>
