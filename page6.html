@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{
+  height:100vh;
+  overflow:hidden;
+  background:white;
+  transition:1s;
+}
+
+/* section */
+.section{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  transition:1s ease;
+}
+.hide{
+  transform:translateX(-100%);
+  opacity:0;
+  pointer-events:none;
+}
+
+/* petals */
+.petal{
+  position:absolute;
+  width:12px;height:12px;
+  background:pink;
+  border-radius:50%;
+  animation:fall 8s linear infinite;
+  opacity:.7;
+}
+@keyframes fall{
+  from{transform:translateY(-10vh)}
+  to{transform:translateY(110vh)}
+}
+
+/* buttons */
+.btn{
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+}
+.yellow{background:#ffd400}
+.pink{background:#ff69b4;color:white}
+.orange{background:orange;color:white}
+
+/* cake */
+.cake{
+  width:180px;height:120px;
+  background:#ffb6c1;
+  border-radius:10px;
+  margin-top:20px;
+  position:relative;
+}
+.candle{
+  width:6px;height:30px;
+  background:white;
+  position:absolute;
+  top:-30px;
+}
+.candle:nth-child(1){left:40px}
+.candle:nth-child(2){left:85px}
+.candle:nth-child(3){left:130px}
+
+/* balloons */
+.balloon{
+  position:absolute;
+  bottom:-60px;
+  width:26px;height:36px;
+  border-radius:50%;
+  animation:fly 6s linear forwards;
+}
+@keyframes fly{
+  to{transform:translateY(-120vh)}
+}
+
+/* envelope */
+.envelope{
+  width:260px;height:180px;
+  background:#c62828;
+  border-radius:6px;
+  position:relative;
+  cursor:pointer;
+}
+.envelope::before{
+  content:'';
+  position:absolute;
+  width:100%;height:100%;
+  background:linear-gradient(135deg,transparent 50%,#b71c1c 50%);
+}
+
+/* vertical big letter */
+.letter{
+  position:absolute;
+  top:5%;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:420px;
+  height:85%;
+  background:white;
+  color:#333;
+  padding:20px;
+  border-radius:10px;
+  overflow-y:auto;
+  display:none;
+  animation:slideUp 1s ease;
+}
+@keyframes slideUp{
+  from{transform:translate(-50%,100%)}
+  to{transform:translate(-50%,0)}
+}
+</style>
+</head>
+
+<body>
+
+<script>
+for(let i=0;i<30;i++){
+ let p=document.createElement("div");
+ p.className="petal";
+ p.style.left=Math.random()*100+"vw";
+ p.style.animationDelay=Math.random()*8+"s";
+ document.body.appendChild(p);
+}
+</script>
+
+<!-- 1 -->
+<div class="section" id="s1">
+  <h2 style="color:black">Let’s Celebrate</h2>
+  <button class="btn yellow" onclick="turnOn()">Turn On The Light</button>
+</div>
+
+<!-- 2 -->
+<div class="section hide" id="s2">
+  <button class="btn pink" onclick="playMusic()">Play Music</button>
+</div>
+
+<!-- 3 -->
+<div class="section hide" id="s3">
+  <h2>Blow the Candles</h2>
+  <div class="cake">
+    <div class="candle"></div>
+    <div class="candle"></div>
+    <div class="candle"></div>
+  </div>
+  <button class="btn orange" onclick="blow()">Blow the Candles</button>
+</div>
+
+<!-- 4 -->
+<div class="section hide" id="s4" style="background:white">
+  <h3 style="color:black">Message From My Heart</h3>
+  <p style="color:black;margin:10px">Click to Open</p>
+  <div class="envelope" onclick="openLetter()"></div>
+
+  <div class="letter" id="letter">
+    <h3>Dear Aditya ❤️</h3>
+    <p>
+      Ye demo letter hai.<br><br>
+      Tum apna pura long message yahan paste kar sakti ho.
+      Letter vertical aur bada hai,
+      scroll smooth rahega.<br><br>
+      Happy Birthday 🎉
+    </p>
+  </div>
+</div>
+
+<audio id="music">
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+function turnOn(){
+ document.body.style.background="linear-gradient(135deg,#6a1b9a,#8e24aa)";
+ slide("s1","s2");
+}
+
+function playMusic(){
+ document.getElementById("music").play();
+ slide("s2","s3");
+}
+
+function blow(){
+ document.querySelectorAll(".candle").forEach(c=>c.remove());
+ for(let i=0;i<12;i++){
+  let b=document.createElement("div");
+  b.className="balloon";
+  b.style.left=Math.random()*100+"vw";
+  b.style.background=`hsl(${Math.random()*360},70%,60%)`;
+  document.body.appendChild(b);
+ }
+ slide("s3","s4");
+}
+
+function openLetter(){
+ document.getElementById("letter").style.display="block";
+}
+
+function slide(a,b){
+ document.getElementById(a).classList.add("hide");
+ document.getElementById(b).classList.remove("hide");
+}
+</script>
+
+</body>
+</html>
