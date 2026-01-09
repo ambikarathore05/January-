@@ -188,11 +188,56 @@ body {
   0% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(110vh); opacity: 0; }
 }
+  .message {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.2s ease;
+}
+
+.birthday {
+  position: absolute;
+  bottom: 110px;
+  width: 100%;
+  text-align: center;
+  font-size: 26px;
+  color: #ffb6e6;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s ease;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -80px;
+  font-size: 30px;
+  animation: rise 4s ease forwards;
+}
+
+@keyframes rise {
+  from { bottom: -80px; opacity: 1; }
+  to { bottom: 60%; opacity: 1; }
+}
 </style>
 </head>
 
 <body>
 
+<div class="message" id="message">
+  Well, I have a message for you <br><b>Aditya ji</b> 💖
+</div>
+
+<div class="birthday" id="birthday">🎉 Happy Birthday 🎉</div>
+
+<audio id="music">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+  
 <div class="title" id="title">Let’s Celebrate!</div>
 
 <div class="light" id="light">💡</div>
@@ -209,7 +254,7 @@ function turnOn() {
 
   const btn = document.getElementById("btn");
   btn.style.background = "#ff4f9a";
-  btn.innerText = "Play music";
+  btn.innerText = "Well, I have a message for you Aditya ji";
 
   document.getElementById("title").style.color = "#ff4f9a";
 
@@ -221,19 +266,37 @@ function turnOn() {
   document.getElementById("cake").style.bottom = "40px";
 
   document.getElementById("center").style.top = "45%";
+
+  /* music */
+  document.getElementById("music").play();
+
+  /* message */
+  setTimeout(() => {
+    const msg = document.getElementById("message");
+    msg.style.opacity = "1";
+    msg.style.transform = "translateY(0)";
+  }, 600);
+
+  /* birthday text */
+  setTimeout(() => {
+    const bd = document.getElementById("birthday");
+    bd.style.opacity = "1";
+    bd.style.transform = "translateY(0)";
+  }, 1200);
+
+  /* balloons */
+  for (let i = 0; i < 8; i++) {
+    setTimeout(createBalloon, i * 300);
+  }
 }
 
-/* hearts */
-function createFlower() {
-  const flower = document.createElement("div");
-  flower.classList.add("flower");
-  flower.innerHTML = "💗";
-  flower.style.left = Math.random() * 100 + "vw";
-  flower.style.animationDuration = (3 + Math.random() * 3) + "s";
-  document.body.appendChild(flower);
-  setTimeout(() => flower.remove(), 6000);
+function createBalloon() {
+  const b = document.createElement("div");
+  b.className = "balloon";
+  b.innerHTML = "🎈";
+  b.style.left = Math.random() * 90 + "vw";
+  document.body.appendChild(b);
 }
-setInterval(createFlower, 300);
 </script>
 
 </body>
