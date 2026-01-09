@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special 💖</title>
+
+<style>
+body{
+  margin:0;
+  padding:0;
+  height:100vh;
+  background:#f6d6dc;
+  font-family:'Poppins', sans-serif;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* CARD */
+.card{
+  background:white;
+  padding:40px 25px;
+  border-radius:18px;
+  text-align:center;
+  width:85%;
+  max-width:320px;
+  position:relative;
+  z-index:2;
+  box-shadow:0 15px 30px rgba(0,0,0,0.15);
+}
+
+h2{
+  font-size:20px;
+  font-weight:500;
+}
+
+/* BUTTON */
+.btn{
+  background:#e75480;
+  color:white;
+  border:none;
+  padding:14px 32px;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  animation:pulse 1.3s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+  100%{transform:scale(1);}
+}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  top:-20px;
+  color:#ff5c8a;
+  font-size:18px;
+  animation:fall linear infinite;
+  z-index:1;
+}
+
+@keyframes fall{
+  0%{transform:translateY(-10px);opacity:1;}
+  100%{transform:translateY(110vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+  <!-- STEP 1 -->
+  <div id="step1">
+    <h2>Have a look at it, sir Jii ✨</h2>
+    <br>
+    <button class="btn" onclick="nextStep()">Let's Go 💕</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="step2" style="display:none;">
+    <h2>You are my favorite person ❤️</h2>
+    <p style="margin-top:15px;">This is just the beginning 😘</p>
+  </div>
+
+</div>
+
+<script>
+function nextStep(){
+  document.getElementById("step1").style.display="none";
+  document.getElementById("step2").style.display="block";
+}
+
+/* HEART GENERATOR */
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
