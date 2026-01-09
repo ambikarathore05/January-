@@ -63,6 +63,7 @@ text-align:center;
   border-radius:50%;
   animation:fall 8s linear infinite;
   opacity:.7;
+  pointer-events: none; 
 }
 @keyframes fall{
   from{transform:translateY(-10vh)}
@@ -94,7 +95,7 @@ text-align:center;
 
 .cake{
   position:relative;
-  width:200px;
+  width:180px;
 }
 
 .layer{
@@ -155,6 +156,7 @@ text-align:center;
   width:26px;height:36px;
   border-radius:50%;
   animation:fly 6s linear forwards;
+  pointer-events: none;
 }
 @keyframes fly{
   to{transform:translateY(-120vh)}
