@@ -235,7 +235,9 @@ body {
 <div class="birthday" id="birthday">🎉 Happy Birthday 🎉</div>
 
 <audio id="music">
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <source <!-- PERFECT SONG -->
+<audio id="perfectSong" loop>
+  <source src="perfect.mp3" type="audio/mpeg">
 </audio>
   
 <div class="title" id="title">Let’s Celebrate!</div>
@@ -268,7 +270,10 @@ function turnOn() {
   document.getElementById("center").style.top = "45%";
 
   /* music */
-  document.getElementById("music").play();
+  <!-- PERFECT SONG -->
+<audio id="perfectSong" loop>
+  <source src="perfect.mp3" type="audio/mpeg">
+</audio>
 
   /* message */
   setTimeout(() => {
