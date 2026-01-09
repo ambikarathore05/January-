@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Surprise</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
 body{
@@ -12,6 +14,8 @@ body{
   overflow:hidden;
   background:white;
   transition:1s;
+  font-family: 'Montserrat', sans-serif;
+text-align:center;
 }
 
   .hb{
@@ -22,6 +26,15 @@ body{
 @keyframes fadeIn{
   from{opacity:0; transform:translateY(-20px)}
   to{opacity:1; transform:translateY(0)}
+}
+
+.birthday-text{
+  font-size: 42px;
+  font-weight: 800;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 30px;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
   
 /* section */
@@ -68,22 +81,69 @@ body{
 .orange{background:orange;color:white}
 
 /* cake */
+
+.cake-area{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:30px;
+}
+
 .cake{
-  width:180px;height:120px;
-  background:#ffb6c1;
-  border-radius:10px;
-  margin-top:20px;
   position:relative;
+  width:200px;
 }
+
+.layer{
+  width:100%;
+  height:50px;
+  border-radius:12px;
+  margin-bottom:6px;
+}
+
+.layer1{ background:#ffb6c1; }
+.layer2{ background:#ffc0cb; }
+.layer3{ background:#ffe4e1; }
+
 .candle{
-  width:6px;height:30px;
-  background:white;
   position:absolute;
-  top:-30px;
+  top:-35px;
+  left:50%;
+  transform:translateX(-50%);
+  width:10px;
+  height:35px;
+  background:white;
+  border-radius:5px;
 }
-.candle:nth-child(1){left:40px}
-.candle:nth-child(2){left:85px}
-.candle:nth-child(3){left:130px}
+
+.flame{
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:14px;
+  height:14px;
+  background:orange;
+  border-radius:50% 50% 50% 50%;
+  animation:flicker 0.6s infinite;
+}
+
+@keyframes flicker{
+  0%{ transform:translateX(-50%) scale(1); opacity:1; }
+  50%{ transform:translateX(-50%) scale(1.2); opacity:0.8; }
+  100%{ transform:translateX(-50%) scale(1); opacity:1; }
+}
+
+.cake-btn{
+  margin-top:20px;
+  padding:12px 22px;
+  border:none;
+  border-radius:25px;
+  background:orange;
+  color:white;
+  font-size:16px;
+}
+  
 
 /* balloons */
 .balloon{
@@ -158,17 +218,29 @@ for(let i=0;i<30;i++){
 <div class="section hide" id="s2">
   <button class="btn pink" onclick="playMusic()">Play Music</button>
 </div>
-  <h1 class="hb">Happy Birthday 🎉</h1>
+  <div class="section active" id="s1">
+  <h1 class="birthday-text">Happy Birthday 🎉</h1>
+
+  <h2>Let’s Celebrate</h2>
+
+  <button class="btn" onclick="turnOnLight()">
+    Turn On The Light
+  </button>
+</div>
 
 <!-- 3 -->
-<div class="section hide" id="s3">
-  <h2>Blow the Candles</h2>
+<div class="cake-area">
   <div class="cake">
-    <div class="candle"></div>
-    <div class="candle"></div>
-    <div class="candle"></div>
+    <div class="layer layer1"></div>
+    <div class="layer layer2"></div>
+    <div class="layer layer3"></div>
+
+    <div class="candle" id="candle">
+      <div class="flame" id="flame"></div>
+    </div>
   </div>
-  <button class="btn orange" onclick="blow()">Blow the Candles</button>
+
+  <button class="cake-btn" onclick="blowCandle()">Blow The Candles</button>
 </div>
 
 <!-- 4 -->
