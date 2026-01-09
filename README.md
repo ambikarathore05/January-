@@ -1,1 +1,155 @@
-# January-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown to Divyanshi</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f6d6dc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 26px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #e91e63;
+}
+
+.subtext {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  width: 70px;
+}
+
+.number {
+  font-size: 28px;
+  font-weight: bold;
+  color: #e91e63;
+}
+
+.label {
+  font-size: 11px;
+  color: #666;
+}
+
+.note {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background: #e91e63;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Counting down to <span class="highlight">Divyanshi's</span><br>special day 🎂</h1>
+
+  <p class="subtext">You mean more to me than words can ever explain 💕</p>
+
+  <div class="timer">
+    <div class="box">
+      <div class="number" id="hours">00</div>
+      <div class="label">HOURS</div>
+    </div>
+    <div class="box">
+      <div class="number" id="minutes">00</div>
+      <div class="label">MINUTES</div>
+    </div>
+    <div class="box">
+      <div class="number" id="seconds">00</div>
+      <div class="label">SECONDS</div>
+    </div>
+  </div>
+
+  <p class="note">✨ A special celebration awaits you at midnight ✨</p>
+
+  <a href="page2.html" class="btn">Let's Celebrate</a>
+</div>
+
+<script>
+let timeLeft = 10; // 10 seconds
+
+const timer = setInterval(() => {
+  if (timeLeft < 0) {
+    clearInterval(timer);
+    // auto next page (optional)
+    // window.location.href = "page2.html";
+    return;
+  }
+
+  const hours = 0;
+  const minutes = 0;
+  const seconds = timeLeft;
+
+  document.getElementById("hours").innerText = "00";
+  document.getElementById("minutes").innerText = "00";
+  document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+
+  timeLeft--;
+}, 1000);
+</script>
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  if (diff < 0) return;
+
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+  document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+  document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+}, 1000);
+</script>
+
+</body>
+</html>
