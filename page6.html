@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turn on the lights</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: #ffffff;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Center content */
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+/* Button */
+.light-btn {
+  background: #ffe600;
+  padding: 18px 40px;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  animation: pulse 1.2s infinite;
+}
+
+/* Button animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Falling flowers */
+.flower {
+  position: fixed;
+  top: -20px;
+  font-size: 18px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="center">
+  <button class="light-btn">Turn on the lights</button>
+</div>
+
+<script>
+function createFlower() {
+  const flower = document.createElement("div");
+  flower.classList.add("flower");
+  flower.innerHTML = "🌸";
+  flower.style.left = Math.random() * 100 + "vw";
+  flower.style.animationDuration = (3 + Math.random() * 3) + "s";
+  document.body.appendChild(flower);
+
+  setTimeout(() => {
+    flower.remove();
+  }, 6000);
+}
+
+setInterval(createFlower, 300);
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celebrate</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: #ffffff;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  transition: background 1.2s ease;
+}
+
+/* center button */
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  transition: all 1s ease;
+}
+
+.btn {
+  padding: 18px 40px;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: #ffe600;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* celebrate text */
+.title {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  color: transparent;
+  transition: color 1s ease;
+}
+
+/* light */
+.light {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.blink {
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* cake */
+.cake {
+  position: absolute;
+  bottom: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+  transition: bottom 1.2s ease;
+}
+
+/* falling hearts */
+.flower {
+  position: fixed;
+  top: -20px;
+  font-size: 16px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="title" id="title">Let’s Celebrate!</div>
+
+<div class="light" id="light">💡</div>
+
+<div class="center" id="center">
+  <button class="btn" id="btn" onclick="turnOn()">Turn on the lights</button>
+</div>
+
+<div class="cake" id="cake">🎂</div>
+
+<script>
+function turnOn() {
+  document.body.style.background = "#6b3fa0";
+
+  const btn = document.getElementById("btn");
+  btn.style.background = "#ff4f9a";
+  btn.innerText = "Play music";
+
+  document.getElementById("title").style.color = "#ff4f9a";
+
+  const light = document.getElementById("light");
+  light.style.top = "60%";
+  light.style.opacity = "1";
+  light.classList.add("blink");
+
+  document.getElementById("cake").style.bottom = "40px";
+
+  document.getElementById("center").style.top = "45%";
+}
+
+/* hearts */
+function createFlower() {
+  const flower = document.createElement("div");
+  flower.classList.add("flower");
+  flower.innerHTML = "💗";
+  flower.style.left = Math.random() * 100 + "vw";
+  flower.style.animationDuration = (3 + Math.random() * 3) + "s";
+  document.body.appendChild(flower);
+  setTimeout(() => flower.remove(), 6000);
+}
+setInterval(createFlower, 300);
+</script>
+
+</body>
+</html>
