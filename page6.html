@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  font-family:Arial,sans-serif;
+  background:#fff;
+  transition:background 1s;
+}
+
+/* common */
+.center{
+  position:absolute;
+  width:100%;
+  text-align:center;
+  top:40%;
+}
+
+/* button */
+.btn{
+  padding:14px 36px;
+  border-radius:30px;
+  font-weight:bold;
+  cursor:pointer;
+  display:inline-block;
+}
+
+/* petals */
+.petal{
+  position:absolute;
+  top:-40px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{ transform:translateY(110vh); }
+}
+
+/* lights */
+.light{
+  position:absolute;
+  bottom:60px;
+  width:100%;
+  display:none;
+}
+
+.light span{
+  height:8px;
+  width:8px;
+  margin:6px;
+  display:inline-block;
+  border-radius:50%;
+  animation:blink 1s infinite alternate;
+}
+
+@keyframes blink{
+  from{opacity:.3}
+  to{opacity:1}
+}
+
+/* hidden */
+.hide{display:none}
+</style>
+</head>
+
+<body>
+
+<!-- SCENE 1 -->
+<div id="scene1" class="center">
+  <h2>Lets Celebrate!</h2>
+  <div class="btn" style="background:#ffd400" onclick="lightsOn()">Turn on the Lights</div>
+</div>
+
+<!-- SCENE 2 -->
+<div id="scene2" class="center hide">
+  <div class="btn" style="background:#ff5c8a;color:white" onclick="playMusic()">Play Music</div>
+</div>
+
+<!-- SCENE 3 -->
+<div id="scene3" class="center hide">
+  <div class="btn" style="background:#ff5c8a;color:white">Blow the Candles</div>
+  <h2 style="margin-top:40px">Happy Birthday</h2>
+  <div style="font-size:70px">🎂</div>
+</div>
+
+<!-- lights -->
+<div class="light" id="lights">
+  <span style="background:red"></span>
+  <span style="background:yellow"></span>
+  <span style="background:cyan"></span>
+  <span style="background:pink"></span>
+  <span style="background:orange"></span>
+</div>
+
+<audio id="song">
+  <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* petals */
+for(let i=0;i<25;i++){
+  let p=document.createElement("div");
+  p.className="petal";
+  p.innerHTML="🌹";
+  p.style.left=Math.random()*100+"vw";
+  p.style.fontSize=(12+Math.random()*10)+"px";
+  p.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(p);
+}
+
+/* scene actions */
+function lightsOn(){
+  document.body.style.background="#6a3fa0";
+  scene1.classList.add("hide");
+  scene2.classList.remove("hide");
+  lights.style.display="block";
+}
+
+function playMusic(){
+  document.getElementById("song").play();
+  scene2.classList.add("hide");
+  scene3.classList.remove("hide");
+}
+</script>
+
+</body>
+</html>
