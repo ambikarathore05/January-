@@ -136,13 +136,15 @@ text-align:center;
 .candle{
   position:absolute;
   top:-35px;
-  left:50%;
-  transform:translateX(-50%);
   width:10px;
   height:35px;
   background:white;
   border-radius:5px;
+
 }
+  .c1{ left:40%; }
+  .c2{ left:50%; }
+  .c3{ left:60%; }
 
 .flame{
   position:absolute;
@@ -280,9 +282,9 @@ for(let i=0;i<30;i++){
       <div class="layer layer2"></div>
       <div class="layer layer3"></div>
 
-      <div class="candle">
-        <div class="flame"></div>
-      </div>
+      <div class="candle c1"><div class="flame"></div></div>
+<div class="candle c2"><div class="flame"></div></div>
+<div class="candle c3"><div class="flame"></div></div>
     </div>
 
     <button class="cake-btn" onclick="blow()">Blow The Candles</button>
