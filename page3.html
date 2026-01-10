@@ -37,6 +37,42 @@ body {
   color: #f4b400;
   font-size: 20px;
 }
+  /* animated happy birthday text */
+.birthday-text {
+  background: linear-gradient(
+    90deg,
+    #ff1744,
+    #ff9100,
+    #ffea00,
+    #00e676,
+    #2979ff,
+    #d500f9
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorMove 3s linear infinite;
+}
+
+/* color moving animation */
+@keyframes colorMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* lets celebrate motion */
+.sub-text {
+  display: inline-block;
+  font-size: 18px;
+  margin-top: 6px;
+  animation: bounce 1.5s infinite;
+}
+
+/* bounce animation */
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
 
 /* dots */
 .dots {
@@ -87,7 +123,10 @@ body {
 <body>
 
 <div class="card">
-  <h2>It's Your Special Day Yeyey! <span class="sparkle">✨✨</span></h2>
+  <h2 class="birthday-text">
+  Happy Birthday 🎉 <br>
+  <span class="sub-text">Let's Celebrate 🎂</span>
+  </h2>
 
   <div class="dots">
     <div class="dot active"></div>
