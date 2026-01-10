@@ -119,22 +119,25 @@ h1 {
 
 <script>
 let timeLeft = 10; // 10 seconds
+const btn = document.getElementById("celebrateBtn");
 
 const timer = setInterval(() => {
-  if (timeLeft < 0) {
+  if (timeLeft <= 0) {
     clearInterval(timer);
-    // auto next page (optional)
-    // window.location.href = "page2.html";
+
+    document.getElementById("hours").innerText = "00";
+    document.getElementById("minutes").innerText = "00";
+    document.getElementById("seconds").innerText = "00";
+
+    btn.classList.remove("disabled");
+    btn.onclick = null;
     return;
   }
 
-  const hours = 0;
-  const minutes = 0;
-  const seconds = timeLeft;
-
   document.getElementById("hours").innerText = "00";
   document.getElementById("minutes").innerText = "00";
-  document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+  document.getElementById("seconds").innerText =
+    String(timeLeft).padStart(2, "0");
 
   timeLeft--;
 }, 1000);
