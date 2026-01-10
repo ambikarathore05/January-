@@ -75,6 +75,36 @@ h1 {
   0% { transform: translateY(100vh); opacity: 1; }
   100% { transform: translateY(-10vh); opacity: 0; }
 }
+  .birthday-text {
+  background: linear-gradient(
+    90deg,
+    #ff1744,
+    #ff9100,
+    #ffee00,
+    #00e676,
+    #2979ff,
+    #d500f9
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorMove 3s linear infinite;
+}
+
+@keyframes colorMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.celebrate {
+  animation: bounce 1.2s infinite;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
 </style>
 </head>
 
@@ -85,11 +115,11 @@ h1 {
 
   <p class="tagline">You mean more to me than words can ever explain 💕</p>
 
-  <p class="highlight">✨ It's Your Birthday! ✨</p>
+  <p class="highlight birthday-text">✨ It's Your Birthday! ✨</p>
 
   <p class="surprise">💜 Ready for your surprise?<br>Something magical is about to unfold 💫</p>
 
-  <a href="page3.html" class="btn">🎉 Let’s Celebrate</a>
+  <a href="page3.html" class="btn celebrate">🎉 Let’s Celebrate</a>
 </div>
 
 <script>
