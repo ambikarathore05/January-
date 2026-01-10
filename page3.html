@@ -1,147 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Special Day ✨</title>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Special Day ✨</title>  <style>  
+body {  
+  margin: 0;  
+  padding: 0;  
+  background: #f6d6dc;  
+  font-family: 'Poppins', sans-serif;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+  height: 100vh;  
+}  
+  
+.card {  
+  background: #fff;  
+  width: 85%;  
+  max-width: 340px;  
+  padding: 40px 20px;  
+  border-radius: 20px;  
+  text-align: center;  
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);  
+}  
+  
+.card h2 {  
+  font-size: 22px;  
+  color: #333;  
+  margin-bottom: 25px;  
+}  
+  
+.sparkle {  
+  color: #f4b400;  
+  font-size: 20px;  
+}  
+  
+/* dots */  
+.dots {  
+  display: flex;  
+  justify-content: center;  
+  gap: 6px;  
+  margin-bottom: 25px;  
+}  
+  
+.dot {  
+  width: 8px;  
+  height: 8px;  
+  background: #ddd;  
+  border-radius: 50%;  
+}  
+  
+.dot.active {  
+  background: #e91e63;  
+}  
+  
+/* animated button */  
+.next-btn {  
+  background: #e91e63;  
+  color: white;  
+  border: none;  
+  padding: 12px 30px;  
+  border-radius: 30px;  
+  font-size: 15px;  
+  cursor: pointer;  
+  animation: shake 1.5s infinite;  
+}  
+  
+@keyframes shake {  
+  0% { transform: translateX(0); }  
+  25% { transform: translateX(-3px); }  
+  50% { transform: translateX(3px); }  
+  75% { transform: translateX(-3px); }  
+  100% { transform: translateX(0); }  
+}  
+  
+.next-btn:active {  
+  transform: scale(0.95);  
+  animation: none;  
+}  
+</style>  </head>  <body>  <div class="card">  
+  <h2>It's Your Special Day Yeyey! <span class="sparkle">✨✨</span></h2>    <div class="dots">  
+    <div class="dot active"></div>  
+    <div class="dot"></div>  
+    <div class="dot"></div>  
+  </div>  <button class="next-btn" onclick="goNext()">Next</button>
 
-<style>
-body {
-  margin: 0;
-  padding: 0;
-  background: #f6d6dc;
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.card {
-  background: #fff;
-  width: 85%;
-  max-width: 340px;
-  padding: 40px 20px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.card h2 {
-  font-size: 22px;
-  color: #333;
-  margin-bottom: 25px;
-}
-
-.sparkle {
-  color: #f4b400;
-  font-size: 20px;
-}
-  /* animated happy birthday text */
-.birthday-text {
-  background: linear-gradient(
-    90deg,
-    #ff1744,
-    #ff9100,
-    #ffea00,
-    #00e676,
-    #2979ff,
-    #d500f9
-  );
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: colorMove 3s linear infinite;
-}
-
-/* color moving animation */
-@keyframes colorMove {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-/* lets celebrate motion */
-.sub-text {
-  display: inline-block;
-  font-size: 18px;
-  margin-top: 6px;
-  animation: bounce 1.5s infinite;
-}
-
-/* bounce animation */
-@keyframes bounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-/* dots */
-.dots {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 25px;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  background: #ddd;
-  border-radius: 50%;
-}
-
-.dot.active {
-  background: #e91e63;
-}
-
-/* animated button */
-.next-btn {
-  background: #e91e63;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 30px;
-  font-size: 15px;
-  cursor: pointer;
-  animation: shake 1.5s infinite;
-}
-
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-3px); }
-  50% { transform: translateX(3px); }
-  75% { transform: translateX(-3px); }
-  100% { transform: translateX(0); }
-}
-
-.next-btn:active {
-  transform: scale(0.95);
-  animation: none;
-}
-</style>
-</head>
-
-<body>
-
-<div class="card">
-  <h2 class="birthday-text">
-  Happy Birthday 🎉 <br>
-  <span class="sub-text">Let's Celebrate 🎂</span>
-  </h2>
-
-  <div class="dots">
-    <div class="dot active"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-  </div>
-
-  <button class="next-btn" onclick="goNext()">Next</button>
-</div>
-
-<script>
-function goNext() {
-  window.location.href = "page4.html";
-}
-</script>
-
-</body>
+</div>  <script>  
+function goNext() {  
+  window.location.href = "page4.html";  
+}  
+</script>  </body>  
 </html>
