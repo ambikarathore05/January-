@@ -118,11 +118,14 @@ h1 {
 </div>
 
 <script>
-let timeLeft = 10; // 10 seconds
+const targetDate = new Date("January 11, 2026 00:00:00").getTime();
 const btn = document.getElementById("celebrateBtn");
 
 const timer = setInterval(() => {
-  if (timeLeft <= 0) {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
     clearInterval(timer);
 
     document.getElementById("hours").innerText = "00";
@@ -134,11 +137,13 @@ const timer = setInterval(() => {
     return;
   }
 
-  document.getElementById("hours").innerText = "00";
-  document.getElementById("minutes").innerText = "00";
-  document.getElementById("seconds").innerText =
-    String(timeLeft).padStart(2, "0");
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
 
-  timeLeft--;
+  document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+  document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+  document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+
 }, 1000);
 </script>
